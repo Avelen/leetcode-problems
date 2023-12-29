@@ -4,37 +4,20 @@
  * @return {number[]}
  */
 var twoSum = function (numbers, target) {
+    let l = 0;
     let n = numbers.length - 1;
-    let res = [];
 
-    const helper = (l = 0) => {
-        let search = target - numbers[l];
-        res.push(l + 1);
-        l++;
+    while (l <= n) {
+        let sum = numbers[l] + numbers[n];
 
-        if (numbers[l] != search) {
-            while (l <= n) {
-                let mid = l + Math.floor((n - l) / 2);
-
-                if (numbers[mid] == search) {
-                    return res.push(mid + 1);
-                }
-
-                if (search < numbers[mid]) {
-                    n = mid - 1;
-                } else {
-                    l = mid + 1;
-                }
-            }
-        } else {
-            return res.push(l + 1);
+        if (sum === target) {
+            return [l + 1, n + 1];
         }
 
-        if (res.length < 2) {
-            helper(res.pop());
+        if (sum < target) {
+            l++;
+        } else {
+            n--;
         }
     }
-    helper();
-
-    return res;
 };
