@@ -3,27 +3,25 @@
  * @return {boolean}
  */
 var isPathCrossing = function (path) {
-    let hash = path.split('');
-    let start = [0, 0];
     let history = new Map();
-    history.set('0.0', 1);
+    let x = 0, y = 0;
+    history.set('0,0', 1);
     let res = false;
 
-    hash.forEach(el => {
-        switch (el) {
-            case 'N': start[1] += 1; break;
-            case 'E': start[0] += 1; break;
-            case 'W': start[0] -= 1; break;
-            case 'S': start[1] -= 1; break;
+    for (let p of path) {
+        switch (p) {
+            case 'N': y += 1; break;
+            case 'E': x += 1; break;
+            case 'W': x -= 1; break;
+            case 'S': y -= 1; break;
         }
 
-        let name = start.join('.');
-        if (history.has(name)) {
+        if (history.has(`${x},${y}`)) {
             return res = true;
         } else {
-            history.set(name, 1);
+            history.set(`${x},${y}`, 1);
         }
-    });
+    }
 
     return res;
 };
