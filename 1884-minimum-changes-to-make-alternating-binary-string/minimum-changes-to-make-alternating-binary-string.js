@@ -8,17 +8,9 @@ var minOperations = function(s) {
 
     for (let i = 0; i < s.length; i++) {
         if (i % 2 == 0) {
-            if (s[i] == '0') {
-                nums[1]++;
-            } else {
-                nums[0]++;
-            }
+            s[i] == '0' ? nums[1]++ : nums[0]++;
         } else {
-            if (s[i] == '1') {
-                nums[1]++;
-            } else {
-                nums[0]++;
-            }
+            s[i] == '1' ? nums[1]++ : nums[0]++;
         }
     }
 
