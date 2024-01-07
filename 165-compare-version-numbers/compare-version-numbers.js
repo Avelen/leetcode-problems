@@ -15,8 +15,6 @@ var compareVersion = function(version1, version2) {
         let v1Num = Number(v1.shift()) || 0;
         let v2Num = Number(v2.shift()) || 0;
 
-        console.log(v1Num, v2Num);
-
         if (v1Num > v2Num) {
             return res = 1;
         } else if (v1Num < v2Num) {
