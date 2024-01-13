@@ -12,11 +12,28 @@
 var swapPairs = function (head) {
     if (!head || !head.next) return head;
 
-    let first = head;
-    let second = head.next;
+    let dummy = new ListNode();
 
-    first.next = swapPairs(second.next);
-    second.next = first;
+    let prevNode = dummy;
+    let currNode = head;
 
-    return second;
+    while (currNode && currNode.next) {
+        prevNode.next = currNode.next;
+        currNode.next = prevNode.next.next;
+        prevNode.next.next = currNode;
+
+        prevNode = currNode;
+        currNode = currNode.next;
+    }
+
+    return dummy.next;
 };
+
+// reqursive approach
+// let first = head;
+// let second = head.next;
+
+// first.next = swapPairs(second.next);
+// second.next = first;
+
+// return second;
