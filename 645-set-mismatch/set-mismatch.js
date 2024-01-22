@@ -4,13 +4,11 @@
  */
 var findErrorNums = function (nums) {
     nums.sort((a, b) => a - b);
-    let res = [];
-    let missIdx = [];
+    let missing = 0;
     let duplicate = 0;
+    let missIdx = [];
     let p1 = 0;
     let p2 = 1;
-
-    console.log(nums);
 
     while (p2 < nums.length) {
         if (nums[p1] !== p2) {
@@ -22,17 +20,16 @@ var findErrorNums = function (nums) {
         p1++;
         p2++;
     }
-    res.push(duplicate);
 
     for(let num of missIdx) {
         if (!nums.includes(num)) {
-            res.push(num);
+            missing = num;
         }
     }
     
-    if (res.length === 1) {
-        res.push(nums[nums.length - 1] + 1);
+    if (!missing) {
+        missing = nums[nums.length - 1] + 1;
     }
 
-    return res;
+    return [duplicate, missing];
 };
