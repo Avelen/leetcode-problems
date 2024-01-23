@@ -9,10 +9,9 @@ var closestCost = function (baseCosts, toppingCosts, target) {
     const toppingCount = toppingCosts.length;
 
     const makeDesert = (basePrice, toppingIndex) => {
-        if (Math.abs(target - basePrice) < Math.abs(target - desertCost)) desertCost = basePrice;
-        if (Math.abs(target - basePrice) === Math.abs(target - desertCost) && basePrice < desertCost) {
-            desertCost = basePrice;
-        }
+        const lessCond = Math.abs(target - basePrice) < Math.abs(target - desertCost);
+        const sameCond = Math.abs(target - basePrice) === Math.abs(target - desertCost) && basePrice < desertCost;
+        if (lessCond || sameCond) desertCost = basePrice;
 
         if (toppingIndex >= toppingCount) return;
         const toppingCost = toppingCosts[toppingIndex];
