@@ -13,28 +13,14 @@
 var rightSideView = function (root) {
     if (!root) return [];
     let ans = [];
-    let currLevel = [];
-    let nextLevel = [root];
-    let node = new TreeNode();
 
-    while (nextLevel.length) {
-        currLevel = nextLevel;
-        nextLevel = [];
-
-        while (currLevel.length) {
-            node = currLevel.shift();
-
-            if (node.left) {
-                nextLevel.push(node.left);
-            }
-
-            if (node.right) {
-                nextLevel.push(node.right);
-            }
-        }
-
-        ans.push(node.val);
+    const dfs = (node, dept) => {
+        if (!node) return;
+        ans[dept] = node.val;
+        if (node.left) dfs(node.left, dept + 1);
+        if (node.right) dfs(node.right, dept + 1);
     }
+    dfs(root, 0);
 
     return ans;
 };
