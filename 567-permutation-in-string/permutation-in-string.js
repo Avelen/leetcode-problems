@@ -10,8 +10,6 @@ var checkInclusion = function(s1, s2) {
         hash[char] = hash[char] + 1 || 1;
     }
 
-    console.log(hash);
-
     let left = 0;
     let right = 0;
     let count = s1.length;
