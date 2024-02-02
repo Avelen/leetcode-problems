@@ -4,19 +4,21 @@
  * @return {number[]}
  */
 var sequentialDigits = function(low, high) {
-    let ex = '123456789';
-    let n = 10;
+    let start = 12;
+    let step = 11;
     let res = [];
-    
-    let lowLen = low.toString().length;
-    let highLen = high.toString().length;
-
-    for (let len = lowLen; len <= highLen; len++) {
-        for (let i = 0; i < n - len; i++) {
-            let num = Number(ex.substring(i, i + len));
-            if (num >= low && num <= high) res.push(num);
-        }
-    }
-
+    helper(start, start, step, low, high, res);
     return res;
 };
+
+const helper = (num, start, step, low, high, list) => {
+    if (num > high) return;
+    if (num >= low) list.push(num);
+    last = num % 10;
+    if(last == 9) {
+        start = (start % 10 + 1) + start * 10;
+        helper(start, start, step * 10 + 1, low, high, list)
+    } else {
+        helper(num + step, start, step, low, high, list)
+    }
+}
