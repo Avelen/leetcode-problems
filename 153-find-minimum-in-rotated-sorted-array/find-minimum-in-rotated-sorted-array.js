@@ -9,14 +9,13 @@ var findMin = function(nums) {
     let right = nums.length - 1;
 
     while (left <= right) {
-    let mid = Math.floor((right + left) / 2);
+        let mid = Math.floor((right + left) / 2);
         if (minNum > nums[mid]) {
             minNum = nums[mid];
             right = mid - 1;
         } else if (minNum < nums[mid]) {
             left = mid + 1;
         }
-        // mid = Math.floor((right + left) / 2);
     }
 
     return minNum;
