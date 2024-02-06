@@ -9,9 +9,7 @@ var groupAnagrams = function(strs) {
     let result = [];
 
     for (let i = 0; i < strs.length; i++) {
-        let currStr = strs[i].split('')
-            .sort((a,b) => a.charCodeAt() - b.charCodeAt())
-            .join('');
+        let currStr = strs[i].split('').sort().join('');
 
         if (hash[currStr] != undefined) {
             result[hash[currStr]].push(strs[i]);
