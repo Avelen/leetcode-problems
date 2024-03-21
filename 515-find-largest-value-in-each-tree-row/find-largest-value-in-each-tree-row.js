@@ -21,7 +21,7 @@ var largestValues = function (root) {
         queue = [];
 
         while (currLevel.length) {                         
-            let curr = currLevel.shift();
+            let curr = currLevel.pop();
 
             if (curr.left) queue.push(curr.left);      
             if (curr.right) queue.push(curr.right);
