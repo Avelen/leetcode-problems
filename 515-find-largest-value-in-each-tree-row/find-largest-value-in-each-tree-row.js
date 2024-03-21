@@ -16,7 +16,7 @@ var largestValues = function (root) {
     let queue = [root];
     
     while (queue.length) {                             
-        let tmp = [];
+        let max = -Infinity;
         let currLevel = queue;
         queue = [];
 
@@ -26,10 +26,10 @@ var largestValues = function (root) {
             if (curr.left) queue.push(curr.left);      
             if (curr.right) queue.push(curr.right);
 
-            tmp.push(curr.val);                         
+            max = Math.max(max, curr.val);
         }
 
-        ans.push(Math.max(...tmp));
+        ans.push(max);
     }
 
     return ans;
