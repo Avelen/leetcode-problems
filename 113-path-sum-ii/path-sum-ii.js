@@ -23,8 +23,8 @@ var pathSum = function (root, targetSum) {
             ans.push([...tmp]);
         } 
         
-            dfs(node.left, tmp, remainder - node.val);
-            dfs(node.right, tmp, remainder - node.val);
+        dfs(node.left, tmp, remainder - node.val);
+        dfs(node.right, tmp, remainder - node.val);
         
         tmp.pop();
     }
