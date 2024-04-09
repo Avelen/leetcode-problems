@@ -21,10 +21,11 @@ var pathSum = function (root, targetSum) {
 
         if (remainder === node.val && node.left === null && node.right === null) {
             ans.push([...tmp]);
-        } else {
+        } 
+        
             dfs(node.left, tmp, remainder - node.val);
             dfs(node.right, tmp, remainder - node.val);
-        }
+        
         tmp.pop();
     }
     dfs(root, [], targetSum);
