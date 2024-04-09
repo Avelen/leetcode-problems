@@ -13,8 +13,6 @@ var timeRequiredToBuy = function(tickets, k) {
             counter++;
         }
 
-        if (tickets[k] === 0) return counter;
-
         if (i == tickets.length - 1) {
             i = 0;
         } else {
