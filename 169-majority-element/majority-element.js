@@ -3,12 +3,11 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    let hash = {}
+    const hash = {}
+    const n = nums.length / 2;
 
     for (let i = 0; i < nums.length; i++) {
         hash[nums[i]] = hash[nums[i]] + 1 || 1;
-
-        const n = nums.length / 2;
 
         if (hash[nums[i]] > n) {
             return nums[i];
