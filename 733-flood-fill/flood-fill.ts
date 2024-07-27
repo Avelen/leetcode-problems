@@ -1,8 +1,8 @@
 function changeColor (image: number[][], sr: number, sc:number, color: number): number[][] {
-    const n = image.length;
-    const m = image[0].length;
+    const n: number = image.length;
+    const m: number = image[0].length;
 
-    const currentColor = image[sr][sc];
+    const currentColor: number = image[sr][sc];
     image[sr][sc] = color;
 
     if (sr - 1 >= 0 && image[sr - 1][sc] === currentColor) changeColor(image, sr - 1, sc, color);
