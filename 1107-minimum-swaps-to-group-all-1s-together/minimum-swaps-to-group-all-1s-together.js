@@ -3,10 +3,8 @@
  * @return {number}
  */
 var minSwaps = function(data) {
-    let onesCount = data.filter(d => d === 1).length;
-
     let left = 0;
-    let right = onesCount;
+    let right = data.filter(d => d === 1).length;
 
     let swapCount = data.slice(left, right).filter(z => z === 0).length;
     let curr = swapCount;
