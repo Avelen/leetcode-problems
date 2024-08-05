@@ -1,0 +1,1 @@
+<h2>the-kth-factor-of-n Notes</h2><hr>[ Time taken: 8 m 30 s ]
