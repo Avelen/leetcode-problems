@@ -4,7 +4,7 @@ function kthDistinct(arr: string[], k: number): string {
     for (let i = 0; i < arr.length; i++) {
         hash[arr[i]] = hash[arr[i]] + 1 || 1;
     }
-console.log(hash);
+
     for (let h in hash) {
         if (hash[h] === 1 && k === 1) return h;
 
