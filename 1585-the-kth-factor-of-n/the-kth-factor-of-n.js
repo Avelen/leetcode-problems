@@ -4,16 +4,16 @@
  * @return {number}
  */
 var kthFactor = function(n, k) {
-    let factors = [];
+    let counter = 0;
 
     for (let i = 0; i <= n; i++) {
 
         if (n % i === 0) {
-            factors.push(i);
+            counter++;
         }
 
-        if (factors.length === k) {
-            return factors[k - 1];
+        if (counter === k) {
+            return i;
         }
     }
 
