@@ -3,15 +3,20 @@
  * @return {number[]}
  */
 var findDuplicates = function(nums) {
-    let ans = [];
-    let hash = {};
+    let ans = new Set();
     
-    for (let i = 0; i < nums.length; i++) {
-        hash[nums[i]] = hash[nums[i]] + 1 || 1;
-        if (hash[nums[i]] === 2) {
-            ans.push(nums[i]);
+    for (let num of nums) {
+        nums[Math.abs(num) - 1] *= -1;
+    }
+
+    console.log(nums);
+
+    for (let num of nums) {
+        if (nums[Math.abs(num) - 1] > 0) {
+            ans.add(Math.abs(num));
+            nums[Math.abs(num) - 1] *= 1;
         }
     }
 
-    return ans;
+    return [...ans];
 };
