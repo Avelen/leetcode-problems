@@ -9,7 +9,6 @@ var findDuplicates = function(nums) {
         nums[Math.abs(num) - 1] *= -1;
     }
 
-    console.log(nums);
 
     for (let num of nums) {
         if (nums[Math.abs(num) - 1] > 0) {
