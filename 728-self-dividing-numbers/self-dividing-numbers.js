@@ -8,10 +8,17 @@ var selfDividingNumbers = function(left, right) {
 
     for (let i = left; i <= right; i++ ) {
         let div = i.toString().split('');
+        let flag = true;
 
-        let num = div.map((n) => +n !== 0 ? +i % +n : undefined);
+        div.forEach((n) => {
+            const el = +n !== 0 ? +i % +n : flag = false;
 
-        if (num.every(n => n === 0)) {
+            if (el > 0) {
+                flag = false;
+            }
+        }) 
+
+        if (flag) {
             ans.push(i);
         }
     }
