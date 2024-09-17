@@ -6,15 +6,9 @@ var createCounter = function (init) {
     let count = init;
 
     return  {
-        increment: () => {
-            return count += 1;
-        },
-        decrement: () => {
-            return count -= 1;
-        },
-        reset: () => {
-            return count = init;
-        }
+        increment: () => count += 1,
+        decrement: () => count -= 1,
+        reset: () => count = init,
     }
 };
 
