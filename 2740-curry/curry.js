@@ -9,7 +9,7 @@ var curry = function(fn) {
             return fn(...args);
         }
 
-        return (...nArgs) => curried(...args, ...nArgs);
+        return (...arg) => curried(...args, ...arg);
     }
 };
 
