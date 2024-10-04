@@ -9,8 +9,7 @@ class ArrayWrapper {
     }
 
     valueOf() {
-        if (this.array.length === 0) return 0;
-        return this.array.reduce((a, b) => a + b);
+        return this.array.reduce((a, b) => a + b, 0);
     }
 
     toString() {
