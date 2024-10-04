@@ -7,7 +7,6 @@ var dividePlayers = function (skill) {
     let left = 0;
     let right = sortedSkills.length - 1;
     const teams = [];
-    const hashPow = {};
     let pow = sortedSkills[left] + sortedSkills[right];
 
     while (left < right) {
@@ -17,7 +16,6 @@ var dividePlayers = function (skill) {
             return -1;
         }
 
-        // hashPow[curr] = currPow;
         teams.push(sortedSkills[left] * sortedSkills[right]);
 
         left++;
