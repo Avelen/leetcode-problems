@@ -2,23 +2,26 @@
  * @param {character[][]} board
  * @return {boolean}
  */
-checkRows = (row) => {
-    let hash = {};
+checkLine = (line) => {
+    const hash = {};
 
-    for (let i = 0; i < row.length; i++) {
-        if (hash[row[i]] && row[i] !== '.') return false;
-        hash[row[i]] = true;  // hash {1: true, 2: true, 3: true …
+    for (let key of line) {
+        if (hash[key] && key !== '.') return false;
+        hash[key] = true;  // hash {1: true, 2: true, 3: true …
     }
+
     return true;
 }
 
 var isValidSudoku = function (board) {
     let n = board.length;
 
+    // check rows is valid
     for (let i = 0; i < n; i++) {
-        if (!checkRows(board[i])) return false;
+        if (!checkLine(board[i])) return false;
     }
 
+    // check cols is valid
     for (let i = 0; i < n; i++) {
         let colsArr = [];
 
@@ -26,34 +29,36 @@ var isValidSudoku = function (board) {
             colsArr.push(board[j][i]);
         }
 
-        if (!checkRows(colsArr)) return false;
+        if (!checkLine(colsArr)) return false;
     }
 
+    // check blocks is valid
     let row = 0;
     let cols = 0;
     let separate = [];
+    let blockSize = n / 3;
 
-    while (cols < 9) {
+    while (cols < n) {
         let tmp = [];
 
-        for (let i = row; i < row + 3 && i < n; i++) {
-            for (let j = cols; j < cols + 3 && j < n; j++) {
+        for (let i = row; i < row + blockSize && i < n; i++) {
+            for (let j = cols; j < cols + blockSize && j < n; j++) {
                 tmp.push(board[i][j]);
             }
         }
 
         separate.push(tmp);
 
-        row += 3;
+        row += blockSize;
 
-        if (row > 9) {
-            cols += 3;
+        if (row > n) {
+            cols += blockSize;
             row = 0;
         }
     }
 
     for (let arr of separate) {
-        if (!checkRows(arr)) return false
+        if (!checkLine(arr)) return false
     }
 
     return true;
