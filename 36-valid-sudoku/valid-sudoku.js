@@ -14,12 +14,9 @@ checkRows = (row) => {
 
 var isValidSudoku = function (board) {
     let n = board.length;
-    let result = true;
 
     for (let i = 0; i < n; i++) {
-        result = checkRows(board[i]);
-
-        if (!result) return false;
+        if (!checkRows(board[i])) return false;
     }
 
     for (let i = 0; i < n; i++) {
@@ -29,8 +26,7 @@ var isValidSudoku = function (board) {
             colsArr.push(board[j][i]);
         }
 
-        result = checkRows(colsArr);
-        if (!result) return false;
+        if (!checkRows(colsArr)) return false;
     }
 
     let row = 0;
@@ -56,12 +52,10 @@ var isValidSudoku = function (board) {
         }
     }
 
-    // separate = [ [1,2,3 … 9], [1,3,3] ]
-
     for (let arr of separate) {
         if (!checkRows(arr)) return false
     }
 
-    return result;
+    return true;
 };
 
