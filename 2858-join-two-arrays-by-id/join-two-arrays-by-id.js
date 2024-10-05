@@ -9,12 +9,7 @@ var join = function (arr1, arr2) {
 
     for (let el of combinedArr) {
         const id = el.id;
-
-        if (!result[id]) {
-            result[id] = { ...el }
-        } else {
-            result[id] = { ...result[id], ...el }
-        }
+        result[id] = { ...result[id], ...el }
     }
 
     return Object.values(result);
