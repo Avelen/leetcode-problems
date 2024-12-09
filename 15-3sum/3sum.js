@@ -2,37 +2,31 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function (nums) {
+var threeSum = function(nums) {
     nums = nums.sort((a, b) => a - b);
-    let hash = new Set();
+    const ans = [];
 
-    const findNums = (i) => {
-        let lo = i + 1;
-        let hi = nums.length - 1;
+    for (let fix = 0; fix < nums.length; fix++) {
+        if (fix > 0 && nums[fix] === nums[fix - 1]) continue;
 
-        while (lo < hi) {
-            let sum = nums[i] + nums[lo] + nums[hi];
-            if (sum < 0) {
-                lo++;
-            } else if (sum > 0) {
-                hi--;
+        let i = fix + 1;
+        let right = nums.length - 1;
+
+        while (i < right) {
+            const sum = nums[fix] + nums[i] + nums[right];
+
+            if (sum > 0) {
+                right--;
+            } else if (sum < 0) {
+                i++;
             } else {
-                let ans = [nums[i], nums[lo], nums[hi]];
-                hash.add(ans);
-                lo++; hi--;
+                ans.push([nums[fix], nums[i], nums[right]]);
+                i++;
 
-                while (lo < hi && nums[lo] == nums[lo - 1]) {
-                    lo++;
-                }
+                while (nums[i] === nums[i - 1] && i < right) i++
             }
         }
     }
 
-    for (let i = 0; i < nums.length - 2; i++) {
-        if (i == 0 || nums[i - 1] != nums[i]) {
-            findNums(i);
-        }
-    }
-
-    return [...hash];
+    return ans;
 };
