@@ -3,19 +3,16 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function (nums, target) {
-    let elMap = new Map();
-    let ans = [];
+var twoSum = function(nums, target) {
+    let hash = {};
 
-    for (i = 0; i < nums.length; i++) {
-        let find = target - nums[i];
-        if (elMap.has(find)) {
-            ans.push(elMap.get(find), i);
-            break;
+    for (let i = 0; i < nums.length; i++) {
+        const dec = target - nums[i];
+
+        if (hash[dec] >= 0) {
+            return [i, hash[dec]];
         }
 
-        elMap.set(nums[i], i);
+        hash[nums[i]] = i;
     }
-
-    return ans;
 };
