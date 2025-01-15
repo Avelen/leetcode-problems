@@ -16,11 +16,10 @@ var orangesRotting = function(grid) {
                 const orange = curr[row][col];
 
                 if (orange === 2) {
-                    let isRotten = false;
-                    if (curr[row - 1] && curr[row - 1][col] === 1) {curr[row - 1][col] = '*'; isRotten = true};
-                    if (curr[row + 1] && curr[row + 1][col] === 1) {curr[row + 1][col] = '*'; isRotten = true};
-                    if (curr[row][col - 1] && curr[row][col - 1] === 1) {curr[row][col - 1] = '*'; isRotten = true};
-                    if (curr[row][col + 1] && curr[row][col + 1] === 1) {curr[row][col + 1] = '*'; isRotten = true};
+                    if (curr[row - 1] && curr[row - 1][col] === 1) curr[row - 1][col] = '*';
+                    if (curr[row + 1] && curr[row + 1][col] === 1) curr[row + 1][col] = '*';
+                    if (curr[row][col - 1] && curr[row][col - 1] === 1) curr[row][col - 1] = '*';
+                    if (curr[row][col + 1] && curr[row][col + 1] === 1) curr[row][col + 1] = '*';
                 }
             }
         }
