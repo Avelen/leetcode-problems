@@ -39,7 +39,6 @@ const isNotMatched = (word1, word2) => {
 
 var findSecretWord = function(words, master) {
     let candidates = [];
-    let counter = 1;
     
     while (words.length) {
         let id = words.length % 2 === 0 ? 0 : words.length - 1;
@@ -55,8 +54,5 @@ var findSecretWord = function(words, master) {
         if (match === 0) {
             words = words.filter((w) => isNotMatched(curr, w) && w !== curr);
         }
-
-        console.log(match, words, counter);
-        counter++;
     }
 };
